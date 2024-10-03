@@ -1,0 +1,309 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>VIOPEX</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,800" />
+
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #e6f0f4;
+            margin: 0;
+            padding: 1px;
+        }
+        form {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+
+        .form-group > div {
+            flex: 2 2 48%; /* Controla o tamanho dos campos para ficarem lado a lado */
+            margin-bottom: 1px;
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #4a90e2;
+            font-size: 22px; /* Ajuste o tamanho dos títulos */
+        }
+
+        #cidade {
+            text-transform: capitalize;
+        }
+
+        h3 {
+            color: #4a90e2;
+            font-size: 12px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            font-size: 12px; /* Ajuste o tamanho das labels */
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <header>
+        <img src="{{ url_for('static', filename='favicon.png') }}" alt="Logo VIOPEX">
+    </header>
+    <p>Prezado Cliente,</p>
+    <p>É com grande satisfação que agradecemos por confiar na <strong>Viopex Transportes</strong>. Para aprimorarmos continuamente nossos serviços e entendermos melhor suas necessidades, convidamos você a participar de uma breve pesquisa que levará apenas 3 minutos para ser concluída.</p>
+    <p>As informações fornecidas serão tratadas com total confidencialidade e utilizadas exclusivamente para análises internas, com o objetivo de melhorar sua experiência conosco e oferecer soluções ainda mais alinhadas às suas expectativas.</p>
+    <p>Agradecemos antecipadamente por sua valiosa colaboração!</p>
+
+    <h2>Dados Pessoais</h2>
+
+    <form method="POST" action="/">
+        <!-- Agrupamento Nome e Empresa -->
+        <div class="form-group">
+            <!-- Nome -->
+            <div>
+                <label for="nome"><strong>Seu Nome</strong><span style="color: red;">*</span></label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+            </div>
+            
+            <!-- Empresa -->
+            <div>
+                <label for="empresa"><strong>Empresa</strong> <span style="color: red;">*</span></label>
+                <input type="text" id="empresa" name="empresa" placeholder="Digite o nome da empresa" required>
+            </div>
+        </div>
+    
+        <!-- Agrupamento Cidade e Telefone -->
+        <div class="form-group">
+            <!-- Cidade -->
+            <div>
+                <label for="cidade"><strong>Cidade</strong> <span style="color: red;">*</span></label>
+                <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+            </div>
+    
+            <!-- Telefone -->
+            <div>
+                <label for="telefone"><strong>Telefone</strong> <span style="color: red;">*</span></label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(xx) x xxxx-xxxx" required>
+            </div>
+        </div>
+    
+        <!-- Email -->
+        <div class="form-group">
+            <div style="flex: 1 1 100%;">
+                <label for="email"><strong>Email</strong> <span style="color: red;">*</span></label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+            </div>
+        </div>
+   
+    <!-- Seção 1 - VIOPEX -->
+    <div id="section1">
+        <h2>Motivo para usar a VIOPEX:</h2>
+        <label>
+            <input type="radio" name="viopex_choice" value="PRAZO">PRAZO
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice" value="PREÇO">PREÇO
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice" value="FREQUÊNCIA">FREQUÊNCIA
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice" value="CAPILARIDADE">CAPILARIDADE
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice" value="MARCA">MARCA
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice" value="OFERTA DE ESPAÇO">OFERTA DE ESPAÇO
+        </label>
+    </div>
+
+    <!-- Seção 2 - VIOPEX -->
+    <div id="section2">
+        <h2>Outro motivo para usar a VIOPEX:</h2>
+        <label>
+            <input type="radio" name="viopex_choice2" value="PRAZO">PRAZO
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice2" value="PREÇO">PREÇO
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice2" value="FREQUÊNCIA">FREQUÊNCIA
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice2" value="CAPILARIDADE">CAPILARIDADE
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice2" value="MARCA">MARCA
+        </label>
+        <label>
+            <input type="radio" name="viopex_choice2" value="OFERTA DE ESPAÇO">OFERTA DE ESPAÇO
+        </label>
+    </div>
+
+    <!-- Seção 4 - Concorrente -->
+    <div id="section4">
+        <h2>Motivo para usar um concorrente da VIOPEX:</h2>
+        <div id="section3">
+             <h3>Se não se importar, mencione o nome da transportadora concorrente:</h3>
+             <input type="text" id="concorrente_nome" name="concorrente_nome" placeholder="Nome da transportadora">
+        </div>        
+        <label>
+            <input type="radio" name="concorrente_choice" value="PRAZO">PRAZO
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice" value="PREÇO">PREÇO
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice" value="FREQUÊNCIA">FREQUÊNCIA
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice" value="CAPILARIDADE">CAPILARIDADE
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice" value="MARCA">MARCA
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice" value="OFERTA DE ESPAÇO">OFERTA DE ESPAÇO
+        </label>
+    </div>
+
+    <!-- Seção 5 - Concorrente -->
+    <div id="section5">
+        <h2>Outro motivo para usar um concorrente da VIOPEX:</h2>
+        <label>
+            <input type="radio" name="concorrente_choice2" value="PRAZO">PRAZO
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice2" value="PREÇO">PREÇO
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice2" value="FREQUÊNCIA">FREQUÊNCIA
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice2" value="CAPILARIDADE">CAPILARIDADE
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice2" value="MARCA">MARCA
+        </label>
+        <label>
+            <input type="radio" name="concorrente_choice2" value="OFERTA DE ESPAÇO">OFERTA DE ESPAÇO
+        </label>
+    </div>
+
+    <div class="button-container">
+        <button type="submit">Enviar Respostas</button>
+    </div>
+
+</form>
+</div>
+
+<script>
+    // Função para verificar se a seleção de um valor nas seções 1 e 2 (VIOPEX) são as mesmas e desabilitar a escolha
+    const section1Radios = document.getElementsByName('viopex_choice');
+    const section2Radios = document.getElementsByName('viopex_choice2');
+
+    section1Radios.forEach(radio => {
+        radio.addEventListener('change', validateViopexChoices);
+    });
+
+    section2Radios.forEach(radio => {
+        radio.addEventListener('change', validateViopexChoices);
+    });
+
+    function validateViopexChoices() {
+        const viopexChoice = document.querySelector('input[name="viopex_choice"]:checked');
+        const viopexChoice2 = document.querySelector('input[name="viopex_choice2"]:checked');
+        
+        if (viopexChoice && viopexChoice2 && viopexChoice.value === viopexChoice2.value) {
+            alert("Você selecionou a mesma resposta para as duas perguntas sobre a VIOPEX. A opção será desmarcada.");
+            viopexChoice2.checked = false;
+        }
+    }
+
+    // Função para verificar se a seleção de um valor nas seções 4 e 5 (Concorrente) são as mesmas e desabilitar a escolha
+    const section3Radios = document.getElementsByName('concorrente_choice');
+    const section4Radios = document.getElementsByName('concorrente_choice2');
+
+    section3Radios.forEach(radio => {
+        radio.addEventListener('change', validateConcorrenteChoices);
+    });
+
+    section4Radios.forEach(radio => {
+        radio.addEventListener('change', validateConcorrenteChoices);
+    });
+
+    function validateConcorrenteChoices() {
+        const concorrenteChoice = document.querySelector('input[name="concorrente_choice"]:checked');
+        const concorrenteChoice2 = document.querySelector('input[name="concorrente_choice2"]:checked');
+        
+        if (concorrenteChoice && concorrenteChoice2 && concorrenteChoice.value === concorrenteChoice2.value) {
+            alert("Você selecionou a mesma resposta para as duas perguntas sobre o concorrente. A opção será desmarcada.");
+            concorrenteChoice2.checked = false;
+        }
+    }
+
+    // Função de máscara para telefone
+    document.getElementById('telefone').addEventListener('input', function(e) {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = x[1] ? `(${x[1]}` : '';
+        e.target.value += x[2] ? `) ${x[2]}` : '';
+        e.target.value += x[3] ? `-${x[3]}` : '';
+    });
+</script>
+
+</body>
+</html>
+{% endblock %}
